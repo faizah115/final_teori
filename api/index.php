@@ -24,6 +24,20 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
  */
 require __DIR__.'/../vendor/autoload.php';
 
+// Fix for Vercel Read-Only Filesystem
+$tmpPaths = [
+    'APP_SERVICES_CACHE' => '/tmp/services.php',
+    'APP_PACKAGES_CACHE' => '/tmp/packages.php',
+    'APP_CONFIG_CACHE' => '/tmp/config.php',
+    'APP_ROUTES_CACHE' => '/tmp/routes.php',
+    'APP_EVENTS_CACHE' => '/tmp/events.php',
+];
+foreach ($tmpPaths as $key => $path) {
+    $_ENV[$key] = $path;
+    $_SERVER[$key] = $path;
+    putenv("{$key}={$path}");
+}
+
 /* --------------------------------------------------------------------------
  | Run The Application
  */
