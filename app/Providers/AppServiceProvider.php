@@ -13,8 +13,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->register(ZiggyServiceProvider::class);
     }
 
-    public function boot()
+    public function boot(): void
     {
-        // No additional boot logic needed for now
+        if (env('APP_ENV') === 'production' || isset($_ENV['VERCEL'])) {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
     }
 }
