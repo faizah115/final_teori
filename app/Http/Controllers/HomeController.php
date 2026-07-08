@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Lapangan;
 use Inertia\Inertia;
 use Inertia\Response;
-use App\Http\Controllers\Controller;
 
-class HomeController extends Controller
+class HomeController extends \App\Http\Controllers\Controller
 {
     /**
      * Tampilkan halaman landing page dengan daftar lapangan tersedia.
