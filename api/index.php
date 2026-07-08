@@ -21,12 +21,6 @@ foreach ($tmpDirs as $dir) {
 }
 
 // Override environment variables for Vercel's read-only filesystem
-$_ENV['APP_ENV'] = 'local';
-putenv('APP_ENV=local');
-
-$_ENV['APP_DEBUG'] = 'true';
-putenv('APP_DEBUG=true');
-
 $_ENV['VIEW_COMPILED_PATH'] = '/tmp/storage/framework/views';
 putenv('VIEW_COMPILED_PATH=/tmp/storage/framework/views');
 
