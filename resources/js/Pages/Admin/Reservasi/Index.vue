@@ -13,29 +13,37 @@ const props = defineProps({
     },
 })
 
-import { ref } from 'vue'
-import { watchDebounced } from '@vueuse/core'
+import { ref, watch } from 'vue'
 
 const search = ref(props.filters.search || '')
 const tanggal = ref(props.filters.tanggal || '')
 const status = ref(props.filters.status || '')
 
-watchDebounced(
-    [search, tanggal, status],
-    ([newSearch, newTanggal, newStatus]) => {
-        const query = {}
-        if (newSearch) query.search = newSearch
-        if (newTanggal) query.tanggal = newTanggal
-        if (newStatus) query.status = newStatus
+// Watch search and tanggal without debounce (status handled via @change)
+watch(search, (newSearch) => {
+    applyFilters({ search: newSearch })
+})
+watch(tanggal, (newTanggal) => {
+    applyFilters({ tanggal: newTanggal })
+})
 
-        router.get(route('admin.reservasi.index'), query, {
-            preserveState: true,
-            preserveScroll: true,
-            replace: true,
-        })
-    },
-    { debounce: 500, maxWait: 1000 }
-)
+function applyFilters(overrides = {}) {
+    const query = {
+        search: search.value,
+        tanggal: tanggal.value,
+        status: status.value,
+        ...overrides,
+    }
+    // Remove empty parameters
+    Object.keys(query).forEach((k) => {
+        if (!query[k]) delete query[k]
+    })
+    router.get(route('admin.reservasi.index'), query, {
+        preserveState: true,
+        preserveScroll: true,
+        replace: true,
+    })
+}
 
 // ─── Formatting Helpers ───────────────────────────────────────────────────
 const formatDate = (dateStr) => {
@@ -141,6 +149,7 @@ const deleteReservasi = (id) => {
                     <select
                         id="status"
                         v-model="status"
+                        @change="applyFilters()"
                         class="w-full bg-cream-bg border-cream-border text-cream-text rounded-lg text-sm focus:ring-emerald-500 focus:border-emerald-500"
                     >
                         <option value="">Semua Status</option>
