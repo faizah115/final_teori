@@ -10,7 +10,8 @@ $tmpDirs = [
     '/tmp/storage/framework/sessions',
     '/tmp/storage/framework/cache',
     '/tmp/storage/logs',
-    '/tmp/storage/app'
+    '/tmp/storage/app',
+    '/tmp/storage/bootstrap/cache'
 ];
 
 foreach ($tmpDirs as $dir) {
@@ -31,6 +32,21 @@ putenv('LOG_CHANNEL=stderr');
 
 $_ENV['CACHE_STORE'] = 'array';
 putenv('CACHE_STORE=array');
+
+$_ENV['APP_CONFIG_CACHE'] = '/tmp/storage/bootstrap/cache/config.php';
+putenv('APP_CONFIG_CACHE=/tmp/storage/bootstrap/cache/config.php');
+
+$_ENV['APP_EVENTS_CACHE'] = '/tmp/storage/bootstrap/cache/events.php';
+putenv('APP_EVENTS_CACHE=/tmp/storage/bootstrap/cache/events.php');
+
+$_ENV['APP_PACKAGES_CACHE'] = '/tmp/storage/bootstrap/cache/packages.php';
+putenv('APP_PACKAGES_CACHE=/tmp/storage/bootstrap/cache/packages.php');
+
+$_ENV['APP_ROUTES_CACHE'] = '/tmp/storage/bootstrap/cache/routes.php';
+putenv('APP_ROUTES_CACHE=/tmp/storage/bootstrap/cache/routes.php');
+
+$_ENV['APP_SERVICES_CACHE'] = '/tmp/storage/bootstrap/cache/services.php';
+putenv('APP_SERVICES_CACHE=/tmp/storage/bootstrap/cache/services.php');
 
 // Maintenance mode
 if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
