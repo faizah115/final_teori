@@ -1,0 +1,114 @@
+/* ─── Google Fonts ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* ─── Tailwind Directives ──────────────────────────────────────────────────── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base Styles ──────────────────────────────────────────────────────────── */
+@layer base {
+    html {
+        font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-cream-bg text-cream-text;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+        @apply font-semibold text-cream-text;
+    }
+
+    /* Fokus ring menggunakan cream-accent */
+    *:focus-visible {
+        @apply outline-none ring-2 ring-cream-accent ring-offset-2 ring-offset-cream-bg;
+    }
+}
+
+/* ─── Component Utilities ──────────────────────────────────────────────────── */
+@layer components {
+    /* Card */
+    .card {
+        @apply bg-cream-card border border-cream-border rounded-2xl shadow-cream;
+    }
+
+    .card-lg {
+        @apply bg-cream-card border border-cream-border rounded-3xl shadow-cream-md;
+    }
+
+    /* Buttons */
+    .btn-primary {
+        @apply inline-flex items-center justify-center gap-2
+               px-6 py-2.5 rounded-xl font-semibold text-sm
+               bg-cream-accent text-white
+               hover:bg-opacity-90 active:scale-95
+               transition-all duration-200 ease-out
+               shadow-cream focus-visible:ring-cream-accent;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center gap-2
+               px-6 py-2.5 rounded-xl font-semibold text-sm
+               bg-cream-card text-cream-text border border-cream-border
+               hover:border-cream-accent hover:text-cream-accent
+               active:scale-95 transition-all duration-200 ease-out;
+    }
+
+    .btn-danger {
+        @apply inline-flex items-center justify-center gap-2
+               px-6 py-2.5 rounded-xl font-semibold text-sm
+               bg-red-500 text-white
+               hover:bg-red-600 active:scale-95
+               transition-all duration-200 ease-out;
+    }
+
+    /* Form Input */
+    .input {
+        @apply w-full px-4 py-2.5 rounded-xl text-sm
+               bg-cream-card border border-cream-border text-cream-text
+               placeholder:text-cream-muted
+               focus:border-cream-accent focus:ring-1 focus:ring-cream-accent
+               transition-colors duration-200;
+    }
+
+    /* Badge */
+    .badge {
+        @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    }
+
+    .badge-success {
+        @apply badge bg-green-100 text-green-700;
+    }
+
+    .badge-warning {
+        @apply badge bg-yellow-100 text-yellow-700;
+    }
+
+    .badge-danger {
+        @apply badge bg-red-100 text-red-700;
+    }
+
+    .badge-accent {
+        @apply badge bg-cream-accent bg-opacity-15 text-cream-accent;
+    }
+
+    /* Divider */
+    .divider {
+        @apply border-t border-cream-border;
+    }
+}
+
+/* ─── Inertia Progress Bar Override ───────────────────────────────────────── */
+#nprogress .bar {
+    background: #C8956C !important;
+    height: 3px !important;
+}
+
+#nprogress .peg {
+    box-shadow: 0 0 10px #C8956C, 0 0 5px #C8956C !important;
+}

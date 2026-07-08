@@ -1,0 +1,45 @@
+# ─── Laravel ─────────────────────────────────────────────────────────────────
+/vendor/
+/node_modules/
+/public/hot
+/public/storage
+/storage/*.key
+/storage/app/public
+/.env
+/.env.backup
+/.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+
+# ─── Prisma ───────────────────────────────────────────────────────────────────
+# Prisma Client (auto-generated, jangan dicommit)
+/node_modules/.prisma/
+
+# ─── Vite / Build ────────────────────────────────────────────────────────────
+/public/build/
+/public/hot
+
+# ─── IDE & OS ────────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# ─── Logs ────────────────────────────────────────────────────────────────────
+/storage/logs/*.log
+*.log
+
+# ─── Testing ─────────────────────────────────────────────────────────────────
+/coverage/
+/.phpunit.cache/
+
+testsprite_tests\tmp\config.json

@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ENUMS
+// ─────────────────────────────────────────────────────────────────────────────
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum StatusReservasi {
+  PENDING
+  KONFIRMASI
+  BATAL
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MODEL: User
+// ─────────────────────────────────────────────────────────────────────────────
+
+model User {
+  @@map("users")
+  id         Int          @id @default(autoincrement())
+  name       String
+  email      String       @unique
+  password   String
+  role       Role         @default(USER)
+  created_at DateTime     @default(now())
+  reservasi  Reservasi[]
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MODEL: Lapangan
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Lapangan {
+  @@map("lapangan")
+  id            Int          @id @default(autoincrement())
+  nama          String
+  jenis         String       @default("Bulutangkis")
+  harga_per_jam Decimal      @db.Decimal(10, 2)
+  foto_url      String?
+  deskripsi     String?
+  is_tersedia   Boolean      @default(true)
+  created_at    DateTime     @default(now())
+  reservasi     Reservasi[]
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MODEL: Reservasi
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Reservasi {
+  @@map("reservasi")
+  id           Int             @id @default(autoincrement())
+  user_id      Int
+  lapangan_id  Int
+  tanggal      DateTime        @db.Date
+  jam_mulai    String
+  jam_selesai  String
+  status       StatusReservasi @default(PENDING)
+  created_at   DateTime        @default(now())
+  user         User            @relation(fields: [user_id], references: [id])
+  lapangan     Lapangan        @relation(fields: [lapangan_id], references: [id])
+}

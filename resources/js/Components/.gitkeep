@@ -1,0 +1,21 @@
+# Vue Components Directory
+#
+# Folder ini berisi komponen-komponen Vue yang dapat digunakan ulang.
+# Struktur yang direncanakan:
+#
+# Components/
+# ├── UI/
+# │   ├── Button.vue        ← Tombol dengan varian (primary, secondary, danger)
+# │   ├── Card.vue          ← Card wrapper dengan cream palette
+# │   ├── Badge.vue         ← Status badge (PENDING, KONFIRMASI, BATAL)
+# │   ├── Input.vue         ← Form input dengan styling cream
+# │   ├── Modal.vue         ← Dialog modal
+# │   ├── Spinner.vue       ← Loading spinner
+# │   └── Alert.vue         ← Flash message alert
+# ├── Layout/
+# │   ├── AppLayout.vue     ← Layout utama (dengan navbar & sidebar)
+# │   ├── GuestLayout.vue   ← Layout untuk halaman auth
+# │   ├── Navbar.vue        ← Navigation bar
+# │   └── Sidebar.vue       ← Sidebar admin
+# └── Lapangan/
+#     └── LapanganCard.vue  ← Card untuk menampilkan info lapangan

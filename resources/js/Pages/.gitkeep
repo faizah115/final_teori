@@ -1,0 +1,29 @@
+# Vue Pages Directory
+#
+# Folder ini berisi halaman-halaman Vue yang di-render via Inertia.js.
+# Struktur folder yang direncanakan:
+#
+# Pages/
+# ├── Welcome.vue           ← Halaman landing page
+# ├── Dashboard.vue         ← Dashboard utama
+# ├── Auth/
+# │   ├── Login.vue         ← Halaman login (Breeze)
+# │   ├── Register.vue      ← Halaman register (Breeze)
+# │   ├── ForgotPassword.vue
+# │   ├── ResetPassword.vue
+# │   └── VerifyEmail.vue
+# ├── Lapangan/
+# │   ├── Index.vue         ← Daftar lapangan
+# │   ├── Show.vue          ← Detail lapangan
+# │   └── Admin/
+# │       ├── Index.vue     ← Admin: kelola lapangan
+# │       ├── Create.vue    ← Admin: tambah lapangan
+# │       └── Edit.vue      ← Admin: edit lapangan
+# ├── Reservasi/
+# │   ├── Index.vue         ← Riwayat reservasi user
+# │   ├── Create.vue        ← Buat reservasi baru
+# │   ├── Show.vue          ← Detail reservasi
+# │   └── Admin/
+# │       └── Index.vue     ← Admin: kelola semua reservasi
+# └── Profile/
+#     └── Edit.vue          ← Edit profil user (Breeze)
