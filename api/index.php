@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
+try {
 /* --------------------------------------------------------------------------
  | Check For Maintenance Mode
  */
@@ -40,3 +41,16 @@ $kernel->terminate($request, $response);
 
 // Force HTTPS (optional, can be removed if not needed)
 $_SERVER['HTTPS'] = 'on';
+
+} catch (\Throwable $e) {
+    http_response_code(500);
+    header('Content-Type: application/json');
+    echo json_encode([
+        'error' => 'Vercel Deployment Debug',
+        'message' => $e->getMessage(),
+        'file' => $e->getFile(),
+        'line' => $e->getLine(),
+        'trace' => $e->getTraceAsString()
+    ]);
+    exit;
+}
