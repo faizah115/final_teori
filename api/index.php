@@ -64,5 +64,8 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 // Override the main storage path to /tmp
 $app->useStoragePath('/tmp/storage');
 
+// Force HTTPS since Vercel SSL termination happens at the edge
+$_SERVER['HTTPS'] = 'on';
+
 // Handle the request
 $app->handleRequest(Request::capture());
