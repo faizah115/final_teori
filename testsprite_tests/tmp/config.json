@@ -1,8 +1,9 @@
 {
-  "status": "commited",
+  "status": "init",
   "type": "frontend",
   "scope": "codebase",
-  "localEndpoint": "http://localhost:8000",
+  "localEndpoint": "http://localhost:8000/",
   "loginUser": "faizah",
-  "loginPassword": "faizah123"
+  "loginPassword": "faizah123",
+  "serverPort": 52795
 }
