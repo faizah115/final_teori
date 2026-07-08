@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Tightenco\Ziggy\ZiggyServiceProvider;
+use Tighten\Ziggy\ZiggyServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
